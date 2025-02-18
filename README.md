@@ -1,5 +1,5 @@
 # SQL Server Data Warehouse Project
-A small-sized firm providing consultancy services in the field of finance is experiencing rapid growth in all its departments. To harness this growth, there is a need for the firm to set up a data infrastructure system that would enable it to consolidate their data into a relational database for optimal usage by Data Analysts and the Business Team. This project demonstrates the process of building a modern data warehouse that integrates data from different sources, cleans, transforms and loads them into a data mart. It highlights the industry best practices in data engineering and analytics.
+A small-sized firm providing consultancy services in the field of finance is experiencing rapid growth in all its departments. To harness this growth, there is a need for the firm to set up a data infrastructure system that would enable it consolidate their data into a relational database for optimal usage by the Data Analysts and Business Team. This project demonstrates the process of building a modern data warehouse that integrates data from different sources, cleans, transforms and loads them into a data mart. It highlights the industry best practices in data engineering and analytics.
 
 ---
 ## 📖 Project Overview
