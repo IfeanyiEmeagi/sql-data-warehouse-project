@@ -1,10 +1,12 @@
 /*
+========================================================================================================================================================
 Script Purpose:
   The script creates the tables at the bronze layer for each of the file from the source system. It checks if the
   table exists and if exists, it drops the table and recreate it.
 
 WARNING:
   Apply caution while running this script as it deletes both the table and its content. Ensure you have backups before proceeding to run this script.
+=========================================================================================================================================================
 */
 IF OBJECT_ID ('bronze.crm_cust_info', 'U') IS NOT NULL
 DROP TABLE bronze.crm_cust_info
