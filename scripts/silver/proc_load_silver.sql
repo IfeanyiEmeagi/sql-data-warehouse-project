@@ -1,3 +1,4 @@
+
 /*
 ===============================================================================
 Stored Procedure: Load Silver Layer (Bronze -> Silver)
@@ -81,7 +82,7 @@ BEGIN
 		PRINT '>> Inserting data into: silver.crm_prod_info'
 		INSERT INTO silver.crm_prod_info(
 			prd_id,
-			prd_cat_id,
+			cat_id,
 			prd_key,
 			prd_name,
 			prd_cost,
@@ -92,7 +93,7 @@ BEGIN
 
 		SELECT
 			prd_id,
-			REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS prd_cat_id,  --Extract the product category id
+			REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS cat_id,  --Extract the product category id
 			SUBSTRING(prd_key, 7, LEN(prd_key)) AS prd_key,			    --Extract the product subcategory id
 			prd_name,
 			ISNULL(prd_cost, 0) AS prd_cost,
@@ -243,4 +244,3 @@ BEGIN
 		PRINT '==================================================';
 		END CATCH
 END
-
