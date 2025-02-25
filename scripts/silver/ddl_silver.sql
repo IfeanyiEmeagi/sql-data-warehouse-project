@@ -1,4 +1,3 @@
-
 /*
 ========================================================================================================================================================
 Script Purpose:
@@ -28,6 +27,7 @@ IF OBJECT_ID ('silver.crm_prod_info', 'U') IS NOT NULL
 DROP TABLE silver.crm_prod_info
 CREATE TABLE silver.crm_prod_info (
 	prd_id INT,
+	cat_id NVARCHAR(50),
 	prd_key NVARCHAR(50),
 	prd_name NVARCHAR(50),
 	prd_cost DECIMAL,
@@ -44,9 +44,9 @@ CREATE TABLE silver.crm_sales_details(
 	sls_order_num NVARCHAR(50),
 	sls_prd_key NVARCHAR(50),
 	sales_cust_id INT,
-	sls_order_date INT,
-	sls_ship_date INT,
-	sls_due_date INT,
+	sls_order_date DATE,
+	sls_ship_date DATE,
+	sls_due_date DATE,
 	sls_sales INT,
 	sls_quantity INT,
 	sls_price INT,
@@ -82,7 +82,3 @@ CREATE TABLE silver.erp_loc_a101(
 	country NVARCHAR(50),
 	dwh_meta_created_date DATETIME2 DEFAULT GETDATE(),
 );
-
-
-
-
