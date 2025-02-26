@@ -175,14 +175,14 @@ BEGIN
 				WHEN cid LIKE 'NAS%' THEN TRIM(SUBSTRING(cid, 4, LEN(cid))) --Extract the customer to
 				ELSE cid
 			END AS cid,
-			CASE WHEN bdate < '1900-01-01' OR bdate > GETDATE() THEN NULL
+			CASE WHEN bdate < '1900-01-01' OR bdate > GETDATE() THEN NULL -- Set future birthdate to NULL
 				ELSE bdate
 			END AS bdate,
-			CASE WHEN UPPER(TRIM(gender)) IN ('F', 'FEMALE') THEN 'Female'
-				WHEN UPPER(TRIM(gender)) IN ('M', 'MALE') THEN 'Male'
-			ELSE 'n/a'
-			END AS gender
-
+			CASE 
+        WHEN UPPER(TRIM(gender)) LIKE '%F%' OR UPPER(TRIM(gender)) LIKE '%FEMALE%' THEN 'Female'
+        WHEN UPPER(TRIM(gender)) LIKE '%M%' OR UPPER(TRIM(gender)) LIKE '%MALE%' THEN 'Male'
+        ELSE 'n/a'
+    END AS gender -- Normalize gender values and handle unknown cases
 		FROM bronze.erp_cust_az12
 		SET @end_time = GETDATE()
 		PRINT '>> Transformation & Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds.'
@@ -199,8 +199,8 @@ BEGIN
 		SELECT 
 			TRIM(REPLACE(cid, '-', '')) AS cid,
 			CASE WHEN country IS NULL OR TRIM(country) = '' THEN 'n/a' 
-				WHEN TRIM(UPPER(country)) IN ('DE', 'GERMANY') THEN 'Germany'
-				WHEN TRIM(UPPER(country)) IN ('US', 'USA', 'UNITED STATES') THEN 'United States'
+				WHEN  UPPER(TRIM(country)) LIKE '%DE%' OR UPPER(TRIM(country)) LIKE '%GERMANY%' THEN 'Germany'
+				WHEN UPPER(TRIM(country)) LIKE '%US%' OR UPPER(TRIM(country)) LIKE '%USA%' OR UPPER(TRIM(country)) LIKE '%UNITED STATES%' THEN 'United States'
 				ELSE TRIM(country)
 			END AS country
 		FROM bronze.erp_loc_a101
@@ -244,3 +244,4 @@ BEGIN
 		PRINT '==================================================';
 		END CATCH
 END
+
