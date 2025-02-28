@@ -1,6 +1,6 @@
 /*
 * Project: SQL Data Warehouse
-* Purpose: Creates the gold layer views from the silver layer table. 
+* Purpose: The script create the gold layer views from the silver tables. It consolidates all the required tables to create the customers, products and sales view.
 */
 
 -- 1. Customer Dimension - Consolidated view of customer information
