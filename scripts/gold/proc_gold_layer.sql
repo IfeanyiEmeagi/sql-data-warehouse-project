@@ -1,5 +1,4 @@
 /*
-* Project: SQL Data Warehouse
 * Purpose: The script create the gold layer views from the silver tables. It consolidates all the required tables to create the customers, products and sales view.
 */
 
